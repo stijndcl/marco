@@ -13,32 +13,43 @@ class SliceMacro : MacroWithMultipleArgs() {
         }
 
         val text = args[0]
-        val range = parseSlice(args[1]) ?: return null
         val separator = args.getOrNull(2)
 
         return if (separator != null) {
-            text.split(separator).slice(range).joinToString { separator }
+            val split = text.split(separator)
+            val range = parseSlice(args[1], split.size) ?: return null
+            split.slice(range).joinToString(separator)
         } else {
+            val range = parseSlice(args[1], text.length) ?: return null
             text.substring(range)
         }
     }
 }
 
-fun parseSlice(arg: String): IntRange? {
+fun parseSlice(arg: String, totalLength: Int): IntRange? {
     if (arg.isEmpty() || arg == ":") {
-        return 0..<-1
+        return 0..<totalLength
     }
 
     // :end
     if (arg.startsWith(":")) {
-        val end = arg.substring(1).toIntOrNull() ?: return null
+        var end = arg.substring(1).toIntOrNull() ?: return null
+        if (end < 0) {
+            end = totalLength - end
+        }
+
         return 0..<end
     }
 
     // start:
     if (arg.endsWith(":")) {
         val start = arg.substring(0, arg.length - 1).toIntOrNull() ?: return null
-        return start..<-1
+
+        if (start < 0 || start > totalLength) {
+            return null
+        }
+
+        return start..<totalLength
     }
 
     // Too many colons
@@ -49,6 +60,11 @@ fun parseSlice(arg: String): IntRange? {
 
     // start:end
     val start = parts[0].toIntOrNull() ?: return null
-    val end = parts[1].toIntOrNull() ?: return null
+    var end = parts[1].toIntOrNull() ?: return null
+
+    if (end < 0) {
+        end = totalLength - end
+    }
+
     return start..<end
 }
