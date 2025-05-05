@@ -9,6 +9,8 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemovePrefixMacro"/>
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemoveSuffixMacro"/>
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.ReplaceMacro"/>
     </extensions>
 </idea-plugin>
