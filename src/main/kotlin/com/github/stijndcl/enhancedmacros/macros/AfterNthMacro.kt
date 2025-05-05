@@ -2,7 +2,7 @@ package com.github.stijndcl.enhancedmacros.macros
 
 import com.github.stijndcl.enhancedmacros.MyBundle
 
-class AfterNth : MacroWithMultipleArgs() {
+class AfterNthMacro : MacroWithMultipleArgs() {
     override fun getName() = "AfterNth"
 
     override fun getDescription() = MyBundle.message("macro.afternth")
@@ -15,6 +15,9 @@ class AfterNth : MacroWithMultipleArgs() {
         val inputString = args[0]
         val pattern = args[1]
         val n = (args.getOrNull(2) ?: "1").toIntOrNull() ?: return null
+
+        if (n == 0) return inputString
+        if (n < 0) return null
 
         val split = inputString.split(pattern)
         if (split.size <= n) {
