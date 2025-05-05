@@ -61,6 +61,8 @@ $Replace($RemoveSuffix($FileName$, .example), .java, .kt$)$
 | `RemovePrefix(input, prefix)`          | Remove a prefix from a string.         | `$RemovePrefix(input, in)$`  |
 | `RemoveSuffix(input, suffix)`          | Remove a suffix from a string.         | `$RemoveSuffix(input, put)$` |
 | `Replace(input, pattern, replacement)` | Replace part of a string with another. | `$Replace(input, in, out)$`  |
+| `Lowercase(input)`                     | Convert a string to lowercase.         | `$Lowercase(input)$`         |
+| `Uppercase(input)`                     | Convert a string to uppercase.         | `$Uppercase(input)$`         |
 
 ## Installation
 
