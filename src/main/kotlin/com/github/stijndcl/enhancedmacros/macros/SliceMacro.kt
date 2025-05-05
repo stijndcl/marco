@@ -12,16 +12,16 @@ class SliceMacro : MacroWithMultipleArgs() {
             return null
         }
 
-        val text = args[0]
+        val inputString = args[0]
         val separator = args.getOrNull(2)
 
         return if (separator != null) {
-            val split = text.split(separator)
+            val split = inputString.split(separator)
             val range = parseSlice(args[1], split.size) ?: return null
             split.slice(range).joinToString(separator)
         } else {
-            val range = parseSlice(args[1], text.length) ?: return null
-            text.substring(range)
+            val range = parseSlice(args[1], inputString.length) ?: return null
+            inputString.substring(range)
         }
     }
 }

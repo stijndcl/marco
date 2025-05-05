@@ -56,15 +56,16 @@ $Replace($FileName$, .java, .kt)$
 $Replace($RemoveSuffix($FileName$, .example), .java, .kt$)$
 ```
 
-| Macro                                  | Description                                                                          | Example                        |
-|----------------------------------------|--------------------------------------------------------------------------------------|--------------------------------|
-| `Lowercase(input)`                     | Convert a string to lowercase.                                                       | `$Lowercase(input)$`           |
-| `RemovePrefix(input, prefix)`          | Remove a prefix from a string.                                                       | `$RemovePrefix(input, in)$`    |
-| `RemoveSuffix(input, suffix)`          | Remove a suffix from a string.                                                       | `$RemoveSuffix(input, put)$`   |
-| `Replace(input, pattern, replacement)` | Replace part of a string with another.                                               | `$Replace(input, in, out)$`    |
-| `Slice(input, range)`                  | Slice a string using Python's slicing syntax.                                        | `$Slice(input, 1:2)$`          |
-| `Slice(input, range, separator)`       | Split a string using a delimiter, and slice the array using Python's slicing syntax. | `$Slice("a,b,c,d", :-1, ",")$` |
-| `Uppercase(input)`                     | Convert a string to uppercase.                                                       | `$Uppercase(input)$`           |
+| Macro                                  | Description                                                                                    | Example                                                   |
+|----------------------------------------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| `AfterNth(input, n)`                   | Extract the part of a string after the nth occurrence a given pattern (defaults to `n = 1`).   | `$AfterNth(github.com/stijndcl/jb-enhancedmacros, /, 2)$` |
+| `Lowercase(input)`                     | Convert a string to lowercase.                                                                 | `$Lowercase(input)$`                                      |
+| `RemovePrefix(input, prefix)`          | Remove a prefix from a string.                                                                 | `$RemovePrefix(input, in)$`                               |
+| `RemoveSuffix(input, suffix)`          | Remove a suffix from a string.                                                                 | `$RemoveSuffix(input, put)$`                              |
+| `Replace(input, pattern, replacement)` | Replace part of a string with another.                                                         | `$Replace(input, in, out)$`                               |
+| `Slice(input, range)`                  | Slice a string using Python's slicing syntax.                                                  | `$Slice(input, 1:2)$`                                     |
+| `Slice(input, range, separator)`       | Split a string using a delimiter, and slice the resulting array using Python's slicing syntax. | `$Slice("a,b,c,d", :-1, ",")$`                            |
+| `Uppercase(input)`                     | Convert a string to uppercase.                                                                 | `$Uppercase(input)$`                                      |
 
 ## Installation
 
