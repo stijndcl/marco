@@ -1,4 +1,4 @@
-package com.github.stijndcl.jbenhancedmacros
+package com.github.stijndcl.enhancedmacros
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
