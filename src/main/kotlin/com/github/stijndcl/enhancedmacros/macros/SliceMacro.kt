@@ -1,28 +1,20 @@
 package com.github.stijndcl.enhancedmacros.macros
 
 import com.github.stijndcl.enhancedmacros.MyBundle
-import com.github.stijndcl.enhancedmacros.parseArguments
-import com.intellij.ide.macro.Macro
-import com.intellij.ide.macro.MacroWithParams
-import com.intellij.openapi.actionSystem.DataContext
 
-class SliceMacro : Macro(), MacroWithParams {
+class SliceMacro : MacroWithMultipleArgs() {
     override fun getName() = "Slice"
 
     override fun getDescription() = MyBundle.message("macro.slice")
 
-    override fun expand(dataContext: DataContext) = null
-
-    override fun expand(dataContext: DataContext, vararg args: String?): String? {
-        val parsedArgs = parseArguments(args.first())
-
-        if (parsedArgs.size != 2 && parsedArgs.size != 3) {
+    override fun process(args: List<String>): String? {
+        if (args.size != 2 && args.size != 3) {
             return null
         }
 
-        val text = parsedArgs[0]
-        val range = parseSlice(parsedArgs[1]) ?: return null
-        val separator = parsedArgs.getOrNull(2)
+        val text = args[0]
+        val range = parseSlice(args[1]) ?: return null
+        val separator = args.getOrNull(2)
 
         return if (separator != null) {
             text.split(separator).slice(range).joinToString { separator }
