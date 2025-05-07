@@ -9,8 +9,6 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.stijndcl.enhancedmacros.macros.RememberMacroService"/>
-
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.AfterNthMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.LowercaseMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.RememberMacro"/>

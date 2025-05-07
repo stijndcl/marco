@@ -12,17 +12,17 @@ import com.intellij.openapi.components.Storage
     storages = [Storage("macros-remember.xml")]
 )
 class RememberMacroService : PersistentStateComponent<RememberMacroService.State> {
-    private var myState = RememberMacroService.State()
+    private var myState = State()
 
     override fun getState() = myState
     override fun loadState(state: State) {
         myState = state
     }
 
-    fun getCachedValue(key: String) = myState.value[key]
+    fun getCachedValue(key: String) = myState.values[key]
 
     fun setCachedValue(key: String, value: String) {
-        myState.value[key] = value
+        myState.values[key] = value
     }
 
     companion object {
@@ -32,7 +32,7 @@ class RememberMacroService : PersistentStateComponent<RememberMacroService.State
     }
 
     data class State(
-        @JvmField val value: MutableMap<String, String> = mutableMapOf()
+        @JvmField val values: MutableMap<String, String> = mutableMapOf()
     )
 }
 
