@@ -46,9 +46,10 @@ $Replace("a sentence, with commas", ", with commas", without commas)$
 ```
 
 > [!WARNING]
-> Spaces between arguments are allowed, but not required (and **will be stripped out in the parser**). However, do note
-> that IntelliJ's program arguments preview window tends to split your arguments into new lines on `", "`, so if you use
-> this window you should refrain from using spaces. Examples here will always use spaces for readability's sake.
+> Spaces between comma-separated arguments are allowed, but not required (and **will be stripped out in the parser**).
+> However, note that IntelliJ's expanded arguments window tends to split your arguments into new lines on `", "`, so if
+> you use this window often you should refrain from using spaces. Examples here will always use spaces for
+> readability's sake.
 
 ```bash
 $Replace(inputString,input,output)$
