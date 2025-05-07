@@ -28,7 +28,7 @@
 Supercharge your run configurations with additional macros.
 <!-- Plugin description end -->
 
-## Available macros & usage
+## Usage notes
 
 IntelliJ macros with parameters generally only allow one parameter to be passed. To get around this, this plugin
 attempts to parse your arguments as you would pass them to a normal function in any programming language: separated by
@@ -74,17 +74,21 @@ $Replace($Lowercase($FileName$), .java, .kt)$
 # Produces: $Replace(main.kt)$
 ```
 
-| Macro                                  | Description                                                                                    | Example                                                   |
-|----------------------------------------|------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
-| `AfterNth(input, n)`                   | Extract the part of a string after the nth occurrence a given pattern (defaults to `n = 1`).   | `$AfterNth(github.com/stijndcl/jb-enhancedmacros, /, 2)$` |
-| `Lowercase(input)`                     | Convert a string to lowercase.                                                                 | `$Lowercase(input)$`                                      |
-| `Remember(prompt, default)`            | Prompt an input value and cache it for subsequent runs.                                        | `$Remember(Date, Today)$`                                 |
-| `RemovePrefix(input, prefix)`          | Remove a prefix from a string.                                                                 | `$RemovePrefix(input, in)$`                               |
-| `RemoveSuffix(input, suffix)`          | Remove a suffix from a string.                                                                 | `$RemoveSuffix(input, put)$`                              |
-| `Replace(input, pattern, replacement)` | Replace part of a string with another.                                                         | `$Replace(input, in, out)$`                               |
-| `Slice(input, range)`                  | Slice a string using Python's slicing syntax.                                                  | `$Slice(input, 1:2)$`                                     |
-| `Slice(input, range, separator)`       | Split a string using a delimiter, and slice the resulting array using Python's slicing syntax. | `$Slice("a,b,c,d", :-1, ",")$`                            |
-| `Uppercase(input)`                     | Convert a string to uppercase.                                                                 | `$Uppercase(input)$`                                      |
+## Available macros
+
+| Macro                                                       | Description                                                                                                                                  | Example                                                   |
+|-------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| `AfterNth(input, n)`                                        | Extract the part of a string after the nth occurrence a given pattern (defaults to `n = 1`).                                                 | `$AfterNth(github.com/stijndcl/jb-enhancedmacros, /, 2)$` |
+| `Choice(prompt, Option 1, Option 2, ..., Option N)`         | Prompt a choice from a list of options. Options may specify an associated value using a colon (`Name:value`).                                | `$Choice(Weekday, Monday:0, Tuesday:1, ...)$`             |
+| `Lowercase(input)`                                          | Convert a string to lowercase.                                                                                                               | `$Lowercase(input)$`                                      |
+| `Remember(prompt, default)`                                 | Prompt an input value and cache it for subsequent runs.                                                                                      | `$Remember(Date, 01/01/1970)$`                            |
+| `RememberChoice(prompt, Option 1, Option 2, ..., Option N)` | Prompt a choice from a list of options and cache it for subsequent runs. Options may specify an associated value using a colon (Name:value). | `$RememberChoice(Weekday, Monday:0, Tuesday:1, ...)$`     | 
+| `RemovePrefix(input, prefix)`                               | Remove a prefix from a string.                                                                                                               | `$RemovePrefix(input, in)$`                               |
+| `RemoveSuffix(input, suffix)`                               | Remove a suffix from a string.                                                                                                               | `$RemoveSuffix(input, put)$`                              |
+| `Replace(input, pattern, replacement)`                      | Replace part of a string with another.                                                                                                       | `$Replace(input, in, out)$`                               |
+| `Slice(input, range)`                                       | Slice a substring using Python's slicing syntax.                                                                                             | `$Slice(input, 1:2)$`                                     |
+| `Slice(input, range, separator)`                            | Split a string using a delimiter, and slice the resulting array using Python's slicing syntax.                                               | `$Slice("a,b,c,d", :-1, ",")$`                            |
+| `Uppercase(input)`                                          | Convert a string to uppercase.                                                                                                               | `$Uppercase(input)$`                                      |
 
 ## Installation
 

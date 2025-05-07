@@ -14,3 +14,23 @@ fun parseArguments(inputString: String?): List<String> {
 
     return inputString.trim().split(ARGUMENT_REGEX).map { it.trim('"', ' ') }
 }
+
+fun parseChoices(args: List<String>): List<Pair<String, String>>? {
+    if (args.isEmpty()) {
+        return null
+    }
+
+    return args.map {
+        val parts = it.split(":")
+
+        if (parts.size == 1) {
+            return@map parts[0] to parts[0]
+        }
+
+        if (parts.size > 2) {
+            return@parseChoices null
+        }
+
+        parts[0] to parts[1]
+    }
+}

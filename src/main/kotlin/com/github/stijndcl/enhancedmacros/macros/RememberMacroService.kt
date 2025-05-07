@@ -1,12 +1,13 @@
 package com.github.stijndcl.enhancedmacros.macros
 
-import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.actionSystem.CommonDataKeys
+import com.intellij.openapi.actionSystem.DataContext
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 
-@Service
+@Service(Service.Level.PROJECT)
 @State(
     name = "RememberMacroService",
     storages = [Storage("macros-remember.xml")]
@@ -19,20 +20,15 @@ class RememberMacroService : PersistentStateComponent<RememberMacroService.State
         myState = state
     }
 
-    fun getCachedValue(key: String) = myState.values[key]
-
-    fun setCachedValue(key: String, value: String) {
-        myState.values[key] = value
-    }
-
     companion object {
-        val instance: RememberMacroService
-            get() = ApplicationManager.getApplication().getService(RememberMacroService::class.java)
-
+        fun getInstance(context: DataContext): RememberMacroService? {
+            return CommonDataKeys.PROJECT.getData(context)?.getService(RememberMacroService::class.java)
+        }
     }
 
     data class State(
-        @JvmField val values: MutableMap<String, String> = mutableMapOf()
+        @JvmField val rememberChoice: MutableMap<String, String> = mutableMapOf(),
+        @JvmField val rememberText: MutableMap<String, String> = mutableMapOf()
     )
 }
 

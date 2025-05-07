@@ -10,8 +10,10 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.AfterNthMacro"/>
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.ChoiceMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.LowercaseMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.RememberMacro"/>
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RememberChoiceMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemovePrefixMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemoveSuffixMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.ReplaceMacro"/>
