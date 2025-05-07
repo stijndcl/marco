@@ -40,13 +40,12 @@ class RememberMacro : PromptingMacro() {
     }
 
     private fun process(context: DataContext, args: List<String>): String? {
-        if (args.size != 2 && args.size != 3) {
+        if (args.size != 1 && args.size != 2) {
             return null
         }
 
-        val key = args[0]
-        val prompt = args[1]
-        val default = RememberMacroService.instance.getCachedValue(key) ?: args.getOrElse(2, { "" })
+        val prompt = args[0]
+        val default = RememberMacroService.instance.getCachedValue(prompt) ?: args.getOrElse(1) { "" }
 
         val userInput = Ref.create<String>()
         ApplicationManager.getApplication().invokeAndWait {
@@ -60,9 +59,14 @@ class RememberMacro : PromptingMacro() {
             throw ExecutionCancelledException()
         }
 
-        RememberMacroService.instance.setCachedValue(key, picked)
+        RememberMacroService.instance.setCachedValue(prompt, picked)
 
-        return picked
+        // Wrap multi-word strings in quotes for argument parsers
+        return if (' ' in picked && !(picked.startsWith('"'))) {
+            "\"$picked\""
+        } else {
+            picked
+        }
     }
 
     override fun promptUser(

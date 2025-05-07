@@ -9,7 +9,14 @@ abstract class MacroWithMultipleArgs : Macro(), MacroWithParams {
     override fun expand(dataContext: DataContext) = null
 
     override fun expand(dataContext: DataContext, vararg args: String?): String? {
-        return process(parseArguments(args.first()))
+        val processed = process(parseArguments(args.first())) ?: return null
+
+        // Wrap multi-word strings in quotes for argument parsers
+        return if (' ' in processed && !(processed.startsWith('"'))) {
+            "\"$processed\""
+        } else {
+            processed
+        }
     }
 
     abstract fun process(args: List<String>): String?
