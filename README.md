@@ -34,12 +34,8 @@ IntelliJ macros with parameters generally only allow one parameter to be passed.
 attempts to parse your arguments as you would pass them to a normal function in any programming language: separated by
 commas.
 
-Spaces between arguments are allowed, but not required (and **will be stripped out**). However, do note that
-IntelliJ's program arguments preview window tends to split your arguments into new lines on `", "`, so if you use this
-window you should refrain from using spaces. Examples will always use spaces for readability's sake.
-
-As every argument is implicitly a string, quotes are _not required_. However, they are allowed in case you want to use a
-comma inside an argument.
+As every macro argument is implicitly a string, quotes are _not required_. However, they are _allowed_ in case you want
+to use a comma inside an argument.
 
 ```bash
 $Replace(inputString, input, output)$
@@ -49,11 +45,32 @@ $Replace("a sentence, with commas", ", with commas", without commas)$
 # Produces: a sentence without commas
 ```
 
-Note that it **is** possible to use other macros as input for these arguments:
+> [!WARNING]
+> Spaces between arguments are allowed, but not required (and **will be stripped out in the parser**). However, do note
+> that IntelliJ's program arguments preview window tends to split your arguments into new lines on `", "`, so if you use
+> this window you should refrain from using spaces. Examples here will always use spaces for readability's sake.
 
 ```bash
+$Replace(inputString,input,output)$
+# Produces: outputString
+
+# This is also allowed
+$Replace(inputString, input, output)$
+# Produces: outputString
+```
+
+> [!WARNING]
+> It **is** possible to use other macros as input for these arguments, but they may **only** be basic macros
+> without arguments:
+
+```bash
+# This will work
 $Replace($FileName$, .java, .kt)$
-$Replace($RemoveSuffix($FileName$, .example), .java, .kt$)$
+# Produces: MyClass.kt
+
+# This will not
+$Replace($Lowercase($FileName$), .java, .kt)$
+# Produces: $Replace(main.kt)$
 ```
 
 | Macro                                  | Description                                                                                    | Example                                                   |
