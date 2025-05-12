@@ -17,16 +17,25 @@ class RememberChoiceMacro : EnhancedPromptingMacro() {
         context: DataContext,
         args: List<String>
     ): String? {
-        if (args.size < 2) {
+        if (args.size < 3) {
             return null
         }
 
-        val prompt = args[0]
-        val options = parseChoices(args.drop(1)) ?: return null
+        val cacheKey = args[0]
+        val prompt = args[1]
+        val options = parseChoices(args.drop(2)) ?: return null
+
+        // Check for uniqueness
+        val uniqueNames = options.map { it.first }.distinct()
+        val uniqueValues = options.map { it.second }.distinct()
+
+        if (uniqueNames.size != options.size || uniqueValues.size != options.size) {
+            throw ExecutionCancelledException()
+        }
 
         val default = RememberMacroService.getInstance(context)?.let { svc ->
             // Check that the value actually exists in the current list of choices before blindly using it as the default
-            options.find { it.first == svc.state.rememberChoice[prompt] }?.first
+            options.find { it.second == svc.state.rememberChoice[cacheKey] }?.first
         }
 
         val userInput = Ref.create<String>()
@@ -36,8 +45,10 @@ class RememberChoiceMacro : EnhancedPromptingMacro() {
 
         val picked = userInput.get() ?: throw ExecutionCancelledException()
 
+        // Sadly the choice box can no longer take key-value pairs for choices,
+        // so we have to manually match the picked value to the associated value
         val associatedValue = options.find { it.first == picked }?.second ?: return null
-        RememberMacroService.getInstance(context)?.state?.rememberChoice?.put(prompt, picked)
+        RememberMacroService.getInstance(context)?.state?.rememberChoice?.put(cacheKey, associatedValue)
         return associatedValue
     }
 

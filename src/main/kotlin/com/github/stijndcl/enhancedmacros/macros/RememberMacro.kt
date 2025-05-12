@@ -12,13 +12,14 @@ class RememberMacro : EnhancedPromptingMacro() {
     override fun getDescription() = MyBundle.message("macro.remember")
 
     override fun process(context: DataContext, args: List<String>): String? {
-        if (args.size != 1 && args.size != 2) {
+        if (args.size != 2 && args.size != 3) {
             return null
         }
 
-        val prompt = args[0]
+        val cacheKey = args[0]
+        val prompt = args[1]
         val default =
-            RememberMacroService.getInstance(context)?.state?.rememberText?.get(prompt) ?: args.getOrElse(1) { "" }
+            RememberMacroService.getInstance(context)?.state?.rememberText?.get(cacheKey) ?: args.getOrElse(2) { "" }
 
         val userInput = Ref.create<String?>()
         ApplicationManager.getApplication().invokeAndWait {
@@ -27,7 +28,7 @@ class RememberMacro : EnhancedPromptingMacro() {
 
         val picked = userInput.get() ?: throw ExecutionCancelledException()
 
-        RememberMacroService.getInstance(context)?.state?.rememberText?.put(prompt, picked)
+        RememberMacroService.getInstance(context)?.state?.rememberText?.put(cacheKey, picked)
 
         // Wrap multi-word strings in quotes for argument parsers
         return if (' ' in picked && !(picked.startsWith('"'))) {
