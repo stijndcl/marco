@@ -18,6 +18,7 @@
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemoveSuffixMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.ReplaceMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.SliceMacro"/>
+        <macro implementation="com.github.stijndcl.enhancedmacros.macros.UnixNowMacro"/>
         <macro implementation="com.github.stijndcl.enhancedmacros.macros.UppercaseMacro"/>
     </extensions>
 </idea-plugin>
