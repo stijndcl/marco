@@ -27,8 +27,8 @@ class SliceMacro : MacroWithMultipleArgs() {
 }
 
 fun parseSlice(arg: String, totalLength: Int): IntRange? {
-    var start = -1
-    var end = -1
+    var start: Int
+    var end: Int
 
     if (arg.isEmpty() || arg == ":") {
         start = 0

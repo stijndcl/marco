@@ -1,9 +1,6 @@
 package com.github.stijndcl.enhancedmacros.macros
 
 import com.github.stijndcl.enhancedmacros.MyBundle
-import com.intellij.ide.macro.Macro
-import com.intellij.ide.macro.MacroWithParams
-import com.intellij.openapi.actionSystem.DataContext
 
 class UppercaseMacro : MacroWithMultipleArgs() {
     override fun getName() = "Uppercase"
