@@ -2,7 +2,7 @@
 <idea-plugin>
     <id>com.github.stijndcl.enhancedmacros</id>
     <name>Enhanced Macros</name>
-    <vendor>stijndcl</vendor>
+    <vendor>Stijn De Clercq</vendor>
 
     <depends>com.intellij.modules.platform</depends>
 
