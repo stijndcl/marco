@@ -1,4 +1,4 @@
-package com.github.stijndcl.enhancedmacros
+package com.github.stijndcl.marco
 
 /**
  * Regex that can parse a single string into a list of arguments

@@ -1,4 +1,4 @@
-package com.github.stijndcl.enhancedmacros.macros
+package com.github.stijndcl.marco.macros
 
 import com.intellij.openapi.actionSystem.CommonDataKeys
 import com.intellij.openapi.actionSystem.DataContext

@@ -132,7 +132,7 @@ tasks {
 
     publishPlugin {
         dependsOn(patchChangelog)
-        hidden = true
+        hidden = true // TODO remove after first release
     }
 
     verifyPluginSignature {

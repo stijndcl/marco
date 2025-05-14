@@ -1,6 +1,6 @@
-package com.github.stijndcl.enhancedmacros.macros
+package com.github.stijndcl.marco.macros
 
-import com.github.stijndcl.enhancedmacros.MyBundle
+import com.github.stijndcl.marco.MyBundle
 import kotlin.text.lowercase
 
 class LowercaseMacro : MacroWithMultipleArgs() {

@@ -1,6 +1,6 @@
-# jb-enhanced-macros
+# marco
 
-![Build](https://github.com/stijndcl/jb-enhanced-macros/workflows/Build/badge.svg)
+![Build](https://github.com/stijndcl/marco/workflows/Build/badge.svg)
 [![Version](https://img.shields.io/jetbrains/plugin/v/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
 [![Downloads](https://img.shields.io/jetbrains/plugin/d/MARKETPLACE_ID.svg)](https://plugins.jetbrains.com/plugin/MARKETPLACE_ID)
 
@@ -70,7 +70,7 @@ $Replace(inputString, input, output)$
 ```
 
 > [!WARNING]
-> It **is** possible to use other macros as input for these arguments, but they may **only** be "basic" macros
+> It **is** possible to use other macros as input for these arguments, but currently they may **only** be "basic" macros
 > **without arguments**:
 
 ```bash
@@ -87,7 +87,7 @@ $Replace($Lowercase($FileName$), .java, .kt)$
 
 | Macro                                                           | Description                                                                                                                                                                                                                                                                                                                                      | Example                                                              |
 |-----------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------|
-| `AfterNth(input, n?)`                                           | Extract the part of a string after the nth occurrence a given pattern (defaults to `n = 1`).                                                                                                                                                                                                                                                     | `$AfterNth(github.com/stijndcl/jb-enhancedmacros, /, 2)$`            |
+| `AfterNth(input, n?)`                                           | Extract the part of a string after the nth occurrence a given pattern (defaults to `n = 1`).                                                                                                                                                                                                                                                     | `$AfterNth(github.com/stijndcl/jb-marco, /, 2)$`                     |
 | `Choice(prompt, Option 1, Option 2, ..., Option N)`             | Prompt a choice from a list of options. Options may specify an associated value using a colon (`Name:value`).                                                                                                                                                                                                                                    | `$Choice(Weekday, Monday:0, Tuesday:1, ...)$`                        |
 | `Lowercase(input)`                                              | Convert a string to lowercase.                                                                                                                                                                                                                                                                                                                   | `$Lowercase(input)$`                                                 |
 | `Remember(id, prompt, default?)`                                | Prompt an input value and cache it for subsequent runs, persisted across IDE restarts. The `id` can be used to match (or prevent matching) a cached value across multiple different run configurations.                                                                                                                                          | `$Remember(date, Enter date, 01/01/1970)$`                           |
@@ -104,9 +104,8 @@ $Replace($Lowercase($FileName$), .java, .kt)$
 
 - Using the IDE built-in plugin system:
 
-  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Enhanced
-  Macros"</kbd> >
-  <kbd>Install</kbd>
+  <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>Marketplace</kbd> > <kbd>Search for "Marco"</kbd> > <kbd>
+  Install</kbd>
 
 - Using JetBrains Marketplace:
 
@@ -119,7 +118,7 @@ $Replace($Lowercase($FileName$), .java, .kt)$
 
 - Manually:
 
-  Download the [latest release](https://github.com/stijndcl/jb-enhanced-macros/releases/latest) and install it manually
+  Download the [latest release](https://github.com/stijndcl/marco/releases/latest) and install it manually
   using
   <kbd>Settings/Preferences</kbd> > <kbd>Plugins</kbd> > <kbd>⚙️</kbd> > <kbd>Install plugin from disk...</kbd>
 

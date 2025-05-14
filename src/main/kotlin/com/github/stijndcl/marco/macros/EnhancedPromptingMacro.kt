@@ -1,6 +1,6 @@
-package com.github.stijndcl.enhancedmacros.macros
+package com.github.stijndcl.marco.macros
 
-import com.github.stijndcl.enhancedmacros.parseArguments
+import com.github.stijndcl.marco.parseArguments
 import com.intellij.ide.macro.PromptingMacro
 import com.intellij.ide.macro.SecondQueueExpandMacro
 import com.intellij.openapi.actionSystem.DataContext

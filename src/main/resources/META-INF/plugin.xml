@@ -1,7 +1,7 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.stijndcl.enhancedmacros</id>
-    <name>Enhanced Macros</name>
+    <id>com.github.stijndcl.marco</id>
+    <name>Marco</name>
     <vendor>Stijn De Clercq</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -9,16 +9,16 @@
     <resource-bundle>messages.MyBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.AfterNthMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.ChoiceMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.LowercaseMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RememberMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RememberChoiceMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemovePrefixMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.RemoveSuffixMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.ReplaceMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.SliceMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.UnixNowMacro"/>
-        <macro implementation="com.github.stijndcl.enhancedmacros.macros.UppercaseMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.AfterNthMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.ChoiceMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.LowercaseMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.RememberMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.RememberChoiceMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.RemovePrefixMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.RemoveSuffixMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.ReplaceMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.SliceMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.UnixNowMacro"/>
+        <macro implementation="com.github.stijndcl.marco.macros.UppercaseMacro"/>
     </extensions>
 </idea-plugin>

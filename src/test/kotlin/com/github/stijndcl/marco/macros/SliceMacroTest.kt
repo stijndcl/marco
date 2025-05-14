@@ -1,4 +1,4 @@
-package com.github.stijndcl.enhancedmacros.macros
+package com.github.stijndcl.marco.macros
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
