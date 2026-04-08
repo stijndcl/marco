@@ -4,6 +4,10 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Support 2026 IDE builds
+
 ## [0.1.1] - 2025-10-20
 
 ### Changed
